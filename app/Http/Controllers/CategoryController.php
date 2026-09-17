@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
-    {
-    return view('categories.index');
+    public function index() {
+        $categories = [
+            'Teknologi & Pemrograman',
+            'Sejarah',
+            'Pengembangan Diri',
+            'Kecerdasan Buatan',
+            'Bisnis & Teknologi',
+        ];
+    return view('categories.index', compact('categories'));
     }
 }
