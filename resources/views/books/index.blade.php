@@ -2,23 +2,22 @@
 @section('title', 'Daftar Buku')
 @section('content')
 
-    <h2>Daftar Buku</h2>
-    <p>Berikut adalah koleksi buku yang tersedia di Library System.</p>
+    <h2>{{ $title }}</h2>
+    <p>{{ $description }}</p>
 
         <ul>
-        @foreach($books as $book)
-            <li>
-                <p><strong>{{ $book['title'] }}</strong></p>
-                <p>Penulis: {{ $book['author'] }}</p>
-                <p>Tahun Terbit: {{ $book['year'] }}</p>
-            </li>
+        {{-- -@foreach ($books as $book)
+            <li>{{  $book }}</li>
+            @endforeach--}}
 
-        @if($book['stok'] > 0)
-            <p>Stok: {{ $book['stok'] }}</p>
-        @else
-            <p>Stok Habis</p>
-        @endif
-        
+        @foreach($books as $book)
+        <li>
+            <p>ID Buku: {{ $book->id }}</p>
+            <p>Judul: {{ $book->title }}</p>
+            <p>Penulis: {{ $book->author }}</p>
+            <p>Tahun Terbit: {{ $book->year }}</p>
+            <p>Stok: {{ $book->stok }}</p>
+        </li>
         @endforeach
         </ul>
 
