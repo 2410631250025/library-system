@@ -10,24 +10,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('books', function () {
-//   // return 'Daftar Buku';
-//     return view('books.index');
-// });
+// Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard');
 
-Route::get('books', [BookController::class, 'index']);
-Route::get('/books/{id}', [BookController::class, 'show'])
-    ->name('books.show');
-Route::get('/books', [BookController::class, 'index'])
-    ->name('books.index');
+// CRUD Books (Otomatis mencakup index, create, store, show, edit, update, destroy)
+Route::resource('books', BookController::class);
 
-Route::get('categories', [CategoryController::class, 'index']);
+// Categories
 Route::get('/categories', [CategoryController::class, 'index'])
     ->name('categories.index');
 
-Route::get('members', [MemberController::class, 'index']);
+// Members
 Route::get('/members', [MemberController::class, 'index'])
     ->name('members.index');
-
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->name('dashboard');

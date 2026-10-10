@@ -12,26 +12,54 @@ class BookController extends Controller
     // $description = 'Daftar Buku yang tersedia di Perpustakaan';}
     public function index() 
     {
-        $title = 'Daftar Buku';
-        $description = 'Daftar Buku yang tersedia di Perpustakaan';
-        // $books = [
-        //     ['title' => 'Pemrograman Web Framework', 'author' => 'Billy Ibrahim','year' => 2026, 'stok' => 1],
-        //     ['title' => 'Menapak Jejak Sejarah Indramayu', 'author' => 'Supali Kasim', 'year' => 2017, 'stok' => 3],
-        //     ['title' => 'Atomic Habits', 'author' => 'James Clear', 'year' => 2018, 'stok' => 2],
-        //     ['title' => 'Clean Code', 'author' => 'Robert C. Martin', 'year' => 2008, 'stok' => 0],
-        //     ['title' => 'Laskar Pelangi', 'author' => 'Andrea Hirata', 'year' => 2005, 'stok' => 1],
-        //     ['title' => 'Pengantar Kecerdasan Buatan', 'author' => 'Bagja Nugraha', 'year' => 2019, 'stok' => 4],
-        //     ['title' => 'Pengantar Blockchain Untuk Bisnis', 'author' => 'Ahmad Khusaeri', 'year' => 2024, 'stok' => 2],
-        // ];
-       
         $books = Book::all();
 
-        return view('books.index', compact('title', 'description', 'books'));       
+        return view('books.index', compact('books'));       
     }
 
     public function show($id)
     {
     return view('books.show', compact('id'));
     }
+
+    public function create()
+    {
+        return view('books.create');
+    }
+
+    public function store(Request $request)
+    {
+    Book::create([
+        'title' => $request->title,
+        'author' => $request->author,
+        'year' => $request->year,
+        'stok' => $request->stok,
+    ]);
+
+    return redirect()->route('books.index');
+    }
+
+    public function edit(Book $book)
+    {
+    return view('books.edit', compact('book'));
+    }
+
+    public function update(Request $request, Book $book)
+    {
+    $book->update([
+        'title' => $request->title,
+        'author' => $request->author,
+        'year' => $request->year,
+        'stok' => $request->stok,
+    ]);
+    return redirect()->route('books.index');
+    }
+
+    public function destroy(Book $book)
+    {
+        $book->delete();
+        return redirect()->route('books.index');
+    }
+
 
 }
