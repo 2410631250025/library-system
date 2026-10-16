@@ -3,16 +3,58 @@
     @csrf
     @method('PUT')
 
-    <label for="title">Judul Buku:</label>
-    <input type="text" id="title" name="title" value="{{ $book->title }}">
-    <label for="author">Penulis:</label>
-    <input type="text" id="author" name="author" value="{{ $book->author }}">
-    <label for="year">Tahun Terbit:</label>
-    <input type="number" id="year" name="year" value="{{ $book->year }}">
-    <label for="stok">Stok:</label>
-    <input type="number" id="stok" name="stok" value="{{ $book->stok }}">
+    <div>
+        <label for="title">Judul Buku:</label>
+        <input 
+            type="text" 
+            name="title" 
+            value="{{ old('title') }}">
+        @error('title')
+            <p>{{ $message }}</p>
+        @enderror
+    </div>
+    
+    <div>
+        <label for="author">Penulis:</label>
+        <input 
+            type="text" 
+            id="author" 
+            name="author" 
+            value="{{ old('author') ?? $book->author }}">
+        @error('author')
+            <p>{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div>
+        <label for="year">Tahun Terbit:</label>
+        <input 
+            type="number" 
+            name="year" 
+            value="{{ old('year') ?? $book->year }}">
+        @error('year')
+            <p>{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div>
+        <label for="stok">Stok:</label>
+        <input 
+            type="number" 
+            name="stok" 
+            placeholder="Stok Buku"
+            value="{{ old('stok') ?? $book->stok }}">
+        @error('stok')
+            <p>{{ $message }}</p>
+        @enderror
+    </div>
 
     <button type="submit">
         Update
     </button>
+    <a href="{{ route('books.index') }}">
+        <button type="button">
+            Batal
+        </button>
+    </a>
 </form>

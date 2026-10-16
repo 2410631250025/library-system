@@ -14,13 +14,11 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
-// CRUD Books (Otomatis mencakup index, create, store, show, edit, update, destroy)
+// CRUD Books
 Route::resource('books', BookController::class);
 
-// Categories
-Route::get('/categories', [CategoryController::class, 'index'])
-    ->name('categories.index');
+// CRUD Categories
+Route::resource('categories', CategoryController::class);
 
-// Members
-Route::get('/members', [MemberController::class, 'index'])
-    ->name('members.index');
+// CRUD Members
+Route::resource('members', MemberController::class);
