@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('categories'))    
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }

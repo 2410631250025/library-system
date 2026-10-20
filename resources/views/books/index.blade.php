@@ -10,8 +10,9 @@
 <ul>
     @foreach($books as $book)
     <li>
-        <p>ID Buku: {{ $book->id }}</p>
-        <p>Judul: {{ $book->title }}</p>
+      <h3>{{ $book->title }}</h3>    
+      <p>Penulis: {{ $book->author }}</p>    
+      <p>Kategori: {{ $book->category?->name ?? 'Belum ada kategori' }}</p>
 
             <a href="{{ route('books.show', $book) }}" >
                 <button type="button">Detail</button>

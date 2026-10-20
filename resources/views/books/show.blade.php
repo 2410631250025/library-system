@@ -8,6 +8,7 @@
     <p>Penulis: {{ $book->author }}</p>
     <p>Tahun Terbit: {{ $book->year }}</p>
     <p>Stok: {{ $book->stok }}</p>
+    <p>Kategori: {{ $book->category?->name ?? 'Belum ada kategori' }}</p>
 
     <a href="{{ route('books.edit', $book) }}" >
         <button type="button">Edit</button>
