@@ -18,13 +18,19 @@
                 <button type="button">Detail</button>
             </a>  
 
-            <form action="{{ route('books.destroy', $book) }}" method="POST" >
+            @can('delete', $book)
+            <form action="{{ route('books.destroy', $book->id) }}"
+                method="POST" 
+                onsubmit="return confirm('Yakin ingin menghapus buku ini?');">
+
                 @csrf
                 @method('DELETE')
+
                 <button type="submit">
                     Hapus
                 </button>
             </form>
+            @endcan
             
         </li>
         @endforeach
