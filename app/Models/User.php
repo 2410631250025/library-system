@@ -29,4 +29,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    protected $fillable = [
+    'name',
+    'email',
+    'password',
+    'role', // Tambahkan baris ini
+    ];
+
+    public function borrowings()
+    {
+        return $this->hasMany(Borrowing::class);
+    }
 }

@@ -140,11 +140,11 @@
         <p>Sistem Informasi Perpustakaan Sederhana</p>
         
         <nav>
-            <!-- Catatan: Pemisah "|" dihapus karena menu sekarang berbentuk list vertikal yang rapi -->
             <a href="{{ route('dashboard') }}">Dashboard</a>
             <a href="{{ route('books.index') }}">Books</a>
             <a href="{{ route('categories.index') }}">Categories</a>
             <a href="{{ route('members.index') }}">Members</a>
+            <a href="{{ route('borrowings.index') }}">Borrowings</a>
             
             @can('manage-user')
                 <a href="{{ route('users.index') }}">

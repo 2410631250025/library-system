@@ -137,5 +137,16 @@
         </div>
         <a href="{{ route('categories.index') }}" class="card-btn">Lihat Kategori</a>
     </div>
+
+    <!-- Kartu 4: Peminjaman -->
+    <div class="stat-card regular">
+        <div class="stat-icon">🔄</div>
+        <div class="stat-details">
+            <h4>Peminjaman</h4>
+            <div class="count">{{ $borrowingCount ?? 0 }}</div>
+            <div class="label">{{ $activeBorrowingCount ?? 0 }} sedang dipinjam</div>
+        </div>
+        <a href="{{ route('borrowings.index') }}" class="card-btn">Kelola Peminjaman</a>
+    </div>
 </div>
 @endsection

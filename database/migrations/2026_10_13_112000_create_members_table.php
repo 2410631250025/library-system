@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
+            $table->string('member_code', 20)->unique();
             $table->string('email', 50)->unique();
             $table->string('phone', 15)->nullable();
+            $table->text('address')->nullable();
             $table->timestamps();
         });
     }

@@ -28,8 +28,10 @@ class MemberController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:255',
+            'member_code' => 'required|string|unique:members,member_code',
             'email' => 'required|email|unique:members,email',
             'phone' => 'nullable|numeric|digits_between:10,15',
+            'address' => 'nullable|string|max:255',
         ]); 
 
         Member::create($validated);
@@ -48,9 +50,12 @@ class MemberController extends Controller
     {
     $member->update([
         'name' => $request->name,
+        'member_code' => $request->member_code,
         'email' => $request->email,
         'phone' => $request->phone,
+        'address' => $request->address,
     ]);
+    
     return redirect()->route('members.index')
         ->with('success', 'Data Anggota Berhasil Diperbarui.');
     }

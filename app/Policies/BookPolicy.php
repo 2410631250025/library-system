@@ -45,7 +45,7 @@ class BookPolicy
      */
     public function delete(User $user, Book $book): bool
     {
-        return in_array($user->role, ['admin', 'petugas'], true);
+        return $user->role === 'admin';
     }
 
     /**
